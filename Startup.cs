@@ -31,6 +31,11 @@ namespace vega
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Add Repository --scoped (instance persits for life of request),
+            // not Transient or Singleton
+            services.AddScoped<IVehicleRepository, VehicleRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
             // Add framework services.
             services.AddMvc();
 
