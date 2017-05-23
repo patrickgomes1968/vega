@@ -1,18 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using AutoMapper;
-using Microsoft.EntityFrameworkCore;
 using vega.Persistence;
+using vega.Core;
+using AutoMapper;
 
-namespace vega
+
+namespace Vega
 {
     public class Startup
     {
@@ -35,15 +33,13 @@ namespace vega
             // not Transient or Singleton
             services.AddScoped<IVehicleRepository, VehicleRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-
-            // Add framework services.
-            services.AddMvc();
-
-            //var conn = Configuration.GetConnectionString("Default");
-            services.AddDbContext<VegaDbContext>(
-                options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
             
             services.AddAutoMapper(); 
+            //var conn = Configuration.GetConnectionString("Default");
+            services.AddDbContext<VegaDbContext>(
+            options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
+            // Add framework services.
+            services.AddMvc();
             
         }
 

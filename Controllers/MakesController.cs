@@ -4,7 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using vega.Controllers.Resources;
 using Microsoft.EntityFrameworkCore;
-using vega.Models;
+using vega.Core.Models;
 using vega.Persistence;
 using System.Net.Http;
 using System;
@@ -25,7 +25,7 @@ namespace vega.Controllers
     [HttpGet("/api/makes")]
     public async Task<IEnumerable<MakeResource>> GetMakes()
     {
-        var makes = await context.Makes.ToListAsync();
+        var makes = await context.Makes.Include(m => m.Models).ToListAsync();
 
         return mapper.Map<List<Make>, List<MakeResource>>(makes);
     }

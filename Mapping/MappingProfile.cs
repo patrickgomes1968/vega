@@ -1,7 +1,7 @@
 using AutoMapper;
 using System.Linq;
 using vega.Controllers.Resources;
-using vega.Models;
+using vega.Core.Models;
 using System.Collections.Generic;
 
 namespace vega.Mapping
@@ -38,7 +38,7 @@ namespace vega.Mapping
                     if (!vr.Features.Contains(f.FeatureId))
                         removedFeatures.Add(f); // can't remove from v as this is in an iteration of v.features
                 //The Linq way to do the above:
-                //var removedFeatures = v.Features.Where(f => !vr.Features.Contains(f.FeatureId));
+                //var removedFeatures = v.Features.Where(f => !vr.Features.Contains(f.FeatureId)).ToList();
                 
                 //Step 2. now remove from v
                 foreach (var f in removedFeatures)

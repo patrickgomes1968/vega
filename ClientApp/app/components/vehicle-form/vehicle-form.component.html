@@ -16,12 +16,12 @@
   </div>
 
   <p>Is this vehicle registered?</p>
-    <label for="registered" class="raio-inline">
-      <input name="isRegistered" type="radio" id="registered" value="true"> Yes
-    </label>
-    <label name="isRegistered" for="not registered" class="raio-inline">
-      <input type="radio" id="not registered" value="flase"> No
-    </label>
+    <!--<label for="registered" class="radio-inline"> -->
+      <input name="isRegistered" type="radio" id="registered" value="true" > Yes
+    <!-- </label>-->
+    <!--<label name="isRegistered" for="not registered" class="raio-inline">-->
+      <input name="isRegistered" type="radio" id="not registered" value="flase"> No
+    <!--</label>-->
   
   <h2>Features</h2>
   <div *ngFor = "let f of features" class="checkbox">
